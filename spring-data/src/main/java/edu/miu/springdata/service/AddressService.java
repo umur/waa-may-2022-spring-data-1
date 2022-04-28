@@ -8,8 +8,7 @@ import java.util.List;
 public interface AddressService {
 
     void save(Address p);
-    void delete(int id);
-    void update(Address p);
+    void deleteById(int id);
     Address getById(int id);
     List<Address> getAll();
 

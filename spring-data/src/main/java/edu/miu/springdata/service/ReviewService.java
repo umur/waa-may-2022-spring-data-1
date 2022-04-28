@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface ReviewService {
     void save(Review p);
-    void delete(int id);
-    void update(Review p);
+    void deleteById(int id);
     Review getById(int id);
     List<Review> getAll();
 }
