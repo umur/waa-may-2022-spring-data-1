@@ -1,9 +1,11 @@
 package edu.miu.springdata.service.implementation;
 
+import edu.miu.springdata.DTO.ProductDto;
 import edu.miu.springdata.entity.unidirectional.Product;
 import edu.miu.springdata.repository.ProductRepo;
 import edu.miu.springdata.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepo productRepo;
+    private final ModelMapper modelMapper;
 
     @Override
-    public void save(Product p) {
-        productRepo.save(p);
+    public void save(ProductDto p) {
+
+        Product product = modelMapper.map(p, Product.class);
+        productRepo.save(product);
     }
 
     @Override
@@ -27,14 +32,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getById(int id) {
-        return productRepo.findById(id).get();
+    public ProductDto getById(int id) {
+        return modelMapper.map(productRepo.findById(id).get(),ProductDto.class);
     }
 
     @Override
-    public List<Product> getAll() {
-        List<Product> result = new ArrayList<>();
-        productRepo.findAll().forEach(result::add);
+    public List<ProductDto> getAll() {
+        List<ProductDto> result = new ArrayList<>();
+        productRepo.findAll().forEach(
+                p -> result.add(modelMapper.map(p, ProductDto.class))
+        );
         return result;
     }
 }

@@ -1,9 +1,11 @@
 package edu.miu.springdata.service.implementation;
 
+import edu.miu.springdata.DTO.UserDto;
 import edu.miu.springdata.entity.unidirectional.User;
 import edu.miu.springdata.repository.UserRepo;
 import edu.miu.springdata.service.UserService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +18,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
+    private final ModelMapper modelMapper;
     @Override
-    public void save(User u) {
-        userRepo.save(u);
+    public void save(UserDto u) {
+        User user = modelMapper.map(u, User.class);
+        userRepo.save(user);
     }
 
     @Override
@@ -27,14 +31,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(int id) {
-        return userRepo.findById(id).get();
+    public UserDto getById(int id) {
+        return modelMapper.map(userRepo.findById(id).get(),UserDto.class);
     }
 
     @Override
-    public List<User> getAll() {
-        List<User> result = new ArrayList<>();
-        userRepo.findAll().forEach(result::add);
+    public List<UserDto> getAll() {
+        List<UserDto> result = new ArrayList<>();
+        userRepo.findAll().forEach(
+                u -> result.add(modelMapper.map(u, UserDto.class))
+        );
         return result;
     }
 }
