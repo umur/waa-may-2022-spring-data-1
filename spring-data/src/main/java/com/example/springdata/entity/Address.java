@@ -18,6 +18,6 @@ public class Address {
 
     private String zip;
 
-//    @OneToOne
-//    private User user;
+    @OneToOne
+    private User user;
 }
