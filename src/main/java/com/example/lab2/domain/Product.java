@@ -1,9 +1,11 @@
 package com.example.lab2.domain;
 
+import com.example.lab2.domain.bidirectionalDomain.JoinColumn.Review;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -23,6 +25,10 @@ public class Product {
     @ManyToOne
     @JoinColumn
     private Category category;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="PRODUCT_FK")
+    private List<Review> reviews;
 
     @Override
     public boolean equals(Object o) {
