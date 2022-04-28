@@ -1,5 +1,6 @@
-package edu.miu.springdata.entity.unidirectional;
+package edu.miu.springdata.entity.joinColumn;
 
+import edu.miu.springdata.entity.unidirectional.Address;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class User {
+public class UserJc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,10 +19,10 @@ public class User {
     private String lastName;
 //    Uncomment for one to many unidirectional mapping
     @OneToMany
-    @JoinColumn(name = "review_id")
-    private List<Review> reviews;
+    @JoinColumn(name = "reviewId")
+    private List<ReviewJc> reviews;
 
     @OneToOne
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressJc address;
 }

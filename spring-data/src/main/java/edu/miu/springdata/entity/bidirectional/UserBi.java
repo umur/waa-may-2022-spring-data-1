@@ -1,10 +1,13 @@
 package edu.miu.springdata.entity.bidirectional;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+@Data
+public class UserBi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,9 +18,9 @@ public class User {
     private String lastName;
 
     @OneToMany(mappedBy = "user")
-    private List<Review> reviews;
+    private List<ReviewBi> reviews;
 
     @OneToOne
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressBi address;
 }

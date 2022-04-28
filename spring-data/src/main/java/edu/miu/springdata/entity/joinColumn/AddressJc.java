@@ -1,9 +1,12 @@
-package edu.miu.springdata.entity.bidirectional;
+package edu.miu.springdata.entity.joinColumn;
+
+import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-public class Address {
+@Data
+public class AddressJc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,9 +14,5 @@ public class Address {
     private String street;
     private String zip;
     private String city;
-
-
-     @OneToOne(mappedBy="address")
-     private User user;
 
 }

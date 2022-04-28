@@ -1,15 +1,16 @@
-package edu.miu.springdata.entity.bidirectional;
+package edu.miu.springdata.entity.joinColumn;
+
+import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-public class Review {
+@Data
+public class ReviewJc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String comment;
 
-    @ManyToOne
-    private User user;
 }

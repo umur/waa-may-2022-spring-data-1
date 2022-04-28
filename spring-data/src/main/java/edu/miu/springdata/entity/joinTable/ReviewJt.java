@@ -1,4 +1,4 @@
-package edu.miu.springdata.entity.unidirectional;
+package edu.miu.springdata.entity.joinTable;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Review {
+public class ReviewJt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
