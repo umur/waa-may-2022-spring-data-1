@@ -110,13 +110,14 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public Collection<ProductDTO> getProductByUserId(Long userId) {
-        return userRepository
-                .findById(userId)
+    public Collection<ProductDTO> getProductsByUserId(Long userId) {
+        return userRepository.fin
+
+                /*.findById(userId)
                 .stream().findFirst().get().getProducts()
                 .stream()
                 .map(product -> modelMapper.map(product, ProductDTO.class))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
     }
 
     public Collection<Review> getReviewByProductId(Long productId) {
