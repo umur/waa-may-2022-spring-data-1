@@ -2,9 +2,11 @@ package com.example.lab2.service;
 
 import com.example.lab2.domain.Category;
 import com.example.lab2.domain.Product;
+import com.example.lab2.domain.bidirectionalDomain.JoinColumn.Review;
 import com.example.lab2.dtos.ProductDTO;
 import com.example.lab2.repository.CategoryRepository;
 import com.example.lab2.repository.ProductRepository;
+import com.example.lab2.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +26,15 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
     private final ModelMapper modelMapper;
 
+    private final UserRepository userRepository;
     public ProductService(ProductRepository productRepository,
                           ModelMapper modelMapper,
-                          CategoryRepository categoryRepository){
+                          CategoryRepository categoryRepository,
+                          UserRepository userRepository){
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     public Collection<ProductDTO> getProducts() {
@@ -111,5 +116,20 @@ public class ProductService {
                 .stream()
                 .map(product -> modelMapper.map(product, ProductDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    public Collection<ProductDTO> getProductByUserId(Long userId) {
+        return userRepository
+                .findById(userId)
+                .stream().findFirst().get().getProducts()
+                .stream()
+                .map(product -> modelMapper.map(product, ProductDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public Collection<Review> getReviewByProductId(Long productId) {
+        return productRepository
+                .findById(productId)
+                .stream().findFirst().get().getReviews() ;
     }
 }
