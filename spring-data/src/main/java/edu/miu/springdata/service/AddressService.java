@@ -1,8 +1,6 @@
 package edu.miu.springdata.service;
 
 import edu.miu.springdata.DTO.AddressDto;
-import edu.miu.springdata.entity.unidirectional.Address;
-import edu.miu.springdata.entity.unidirectional.User;
 
 import java.util.List;
 

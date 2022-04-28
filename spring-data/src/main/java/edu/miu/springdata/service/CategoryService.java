@@ -1,8 +1,6 @@
 package edu.miu.springdata.service;
 
 import edu.miu.springdata.DTO.CategoryDto;
-import edu.miu.springdata.entity.unidirectional.Category;
-import edu.miu.springdata.entity.unidirectional.Product;
 
 import java.util.List;
 

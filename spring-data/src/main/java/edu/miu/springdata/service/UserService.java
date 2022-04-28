@@ -1,7 +1,6 @@
 package edu.miu.springdata.service;
 
 import edu.miu.springdata.DTO.UserDto;
-import edu.miu.springdata.entity.unidirectional.User;
 
 import java.util.List;
 

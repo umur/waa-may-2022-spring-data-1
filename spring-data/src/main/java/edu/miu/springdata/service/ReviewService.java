@@ -1,7 +1,6 @@
 package edu.miu.springdata.service;
 
 import edu.miu.springdata.DTO.ReviewDto;
-import edu.miu.springdata.entity.unidirectional.Review;
 
 import java.util.List;
 
