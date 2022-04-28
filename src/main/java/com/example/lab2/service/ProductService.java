@@ -6,14 +6,19 @@ import com.example.lab2.dtos.ProductDTO;
 import com.example.lab2.repository.CategoryRepository;
 import com.example.lab2.repository.ProductRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
+
+    @Autowired
+    EntityManager manager;
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
@@ -53,7 +58,11 @@ public class ProductService {
             product.setCategory(category);
             categoryRepository.save(category);
         }
-        productRepository.save(product);
+        //productRepository.save(product);
+        manager.joinTransaction();
+        manager.persist(product);
+        manager.flush();
+        manager.close();
         return productDTO;
     }
 

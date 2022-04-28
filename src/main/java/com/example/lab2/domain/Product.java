@@ -21,7 +21,6 @@ public class Product {
     private double rating;
 
     @ManyToOne
-    @JoinColumn
     private Category category;
 
     @Override
