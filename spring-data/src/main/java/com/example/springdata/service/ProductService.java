@@ -20,4 +20,6 @@ public interface ProductService {
     List<ProductDto> getAllByCategoryNameAndMaxPrice(String c, double price);
 
     List<ProductDto> getAllByName(String name);
+
+    List<ProductDto> getAllByUserId(int userId);
 }

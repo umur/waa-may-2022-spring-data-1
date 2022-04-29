@@ -41,5 +41,9 @@ public class ProductController {
         return ResponseEntity.ok(productService.save(productDto));
     }
 
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<List<ProductDto>> findByUserId(@PathVariable int userId) {
+        return ResponseEntity.ok(productService.getAllByUserId(userId));
+    }
 
 }

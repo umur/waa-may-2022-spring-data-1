@@ -28,4 +28,7 @@ public class Product {
     @JsonIgnoreProperties("category")
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
+
+    @ManyToOne
+    private User createdBy;
 }

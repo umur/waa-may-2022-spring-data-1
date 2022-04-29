@@ -75,6 +75,13 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<ProductDto> getAllByUserId(int userId) {
+        return productRepository.findByCreatedById(userId).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     private ProductDto convertToDto(Product product) {
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
         return productDto;

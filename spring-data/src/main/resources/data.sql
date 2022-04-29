@@ -18,6 +18,9 @@ VALUES (5, 'okalu@miu.edu', 'obinna', 'kalu', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wr
 INSERT INTO users (id, email, first_name, last_name, password)
 VALUES (6, 'tina@miu.edu', 'tina', 'xing', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2'); --123
 
+INSERT INTO users (id, email, first_name, last_name, password)
+VALUES (7, 'manhnguyen@miu.edu', 'Manh', 'Nguyen', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2'); --123
+
 -- CATEGORIES
 
 INSERT INTO category (id, name)
@@ -28,14 +31,14 @@ VALUES (2, 'Table');
 
 -- PRODUCTS
 
-INSERT INTO product (id, name, price, rating, category_id)
-VALUES (1, 'iPhone X', 1200, 4, 1);
+INSERT INTO product (id, name, price, rating, category_id, created_by_id)
+VALUES (1, 'iPhone X', 1200, 4, 1, 7);
 
-INSERT INTO product (id, name, price, rating, category_id)
-VALUES (2, 'iPhone 11', 1300, 5, 1);
+INSERT INTO product (id, name, price, rating, category_id, created_by_id)
+VALUES (2, 'iPhone 11', 1300, 5, 1, 7);
 
-INSERT INTO product (id, name, price, rating, category_id)
-VALUES (3, 'iPhone 13', 2000, 5, 1);
+INSERT INTO product (id, name, price, rating, category_id, created_by_id)
+VALUES (3, 'iPhone 13', 2000, 5, 1, 7);
 
 -- REVIEWS
 

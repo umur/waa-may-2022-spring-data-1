@@ -15,4 +15,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     List<Product> findAllByCategoryNameAndPriceLessThan(String c, double price);
 
     List<Product> findByNameContaining(@Param("name") String n);
+
+    List<Product> findByCreatedById(@Param("created_by_id") int userId);
 }
