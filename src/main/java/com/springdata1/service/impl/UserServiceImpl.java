@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User1 getById(int id) {
+        //System.out.println("id "+id);
         return user1Repo.findById(id).stream().collect(Collectors.toList()).get(0);
     }
 
