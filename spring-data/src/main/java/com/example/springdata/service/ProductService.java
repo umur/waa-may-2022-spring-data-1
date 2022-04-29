@@ -1,15 +1,21 @@
 package com.example.springdata.service;
 
-import com.example.springdata.entity.Product;
+import com.example.springdata.dto.AddProductDto;
+import com.example.springdata.dto.ProductDto;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface ProductService {
-    public Product save(Product product);
+    ProductDto save(AddProductDto product) throws ParseException;
 
-    public void delete(Integer id);
+    void delete(Integer id);
 
-    public Product getById(Integer id);
+    ProductDto getById(Integer id);
 
-    public List<Product> getAll();
+    List<ProductDto> getAll();
+
+    List<ProductDto> getAllByMinPrice(Double price);
+
+    List<ProductDto> getAllByCategoryNameAndMaxPrice(String c, double price);
 }

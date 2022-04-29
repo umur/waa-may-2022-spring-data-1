@@ -4,6 +4,8 @@ import com.example.springdata.entity.Address;
 import com.example.springdata.entity.User;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class AddUserDto {
     private String email;
@@ -15,4 +17,6 @@ public class AddUserDto {
     private String lastName;
 
     private AddAddressDto address;
+
+//    private List<ReviewDto> reviews;
 }

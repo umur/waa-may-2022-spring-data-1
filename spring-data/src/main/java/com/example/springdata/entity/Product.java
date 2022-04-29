@@ -1,15 +1,18 @@
 package com.example.springdata.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;
@@ -18,6 +21,11 @@ public class Product {
 
     private Double rating;
 
-    @ManyToOne
+    @JsonIgnoreProperties("products")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
+
+    @JsonIgnoreProperties("category")
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
 }

@@ -1,0 +1,41 @@
+package com.example.springdata.controller;
+
+import com.example.springdata.dto.AddProductDto;
+import com.example.springdata.dto.ProductDto;
+import com.example.springdata.service.ProductService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/v1/products")
+@AllArgsConstructor
+public class ProductController {
+
+    private final ProductService productService;
+
+    @GetMapping
+    public ResponseEntity<List<ProductDto>> findProducts(@RequestParam Map<String, String> params) {
+        if (params.containsKey("minPrice")) {
+            Double minPrice = Double.valueOf(params.get("minPrice"));
+            return ResponseEntity.ok(productService.getAllByMinPrice(minPrice));
+        } else if (params.containsKey("maxPrice") && params.containsKey("categoryName")) {
+            Double maxPrice = Double.valueOf(params.get("maxPrice"));
+            String categoryName = params.get("categoryName");
+            return ResponseEntity.ok(productService.getAllByCategoryNameAndMaxPrice(categoryName, maxPrice));
+        }
+
+        return ResponseEntity.ok(productService.getAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<ProductDto> save(@RequestBody AddProductDto productDto) throws ParseException {
+        return ResponseEntity.ok(productService.save(productDto));
+    }
+
+
+}

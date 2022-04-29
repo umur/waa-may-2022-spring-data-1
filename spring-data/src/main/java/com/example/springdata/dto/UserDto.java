@@ -25,5 +25,5 @@ public class UserDto {
 
     private AddressDto address;
 
-    private List<ReviewDto> reviews;
+//    private List<AddReviewDto> reviews;
 }
