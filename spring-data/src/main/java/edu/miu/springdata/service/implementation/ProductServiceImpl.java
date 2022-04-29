@@ -1,13 +1,13 @@
 package edu.miu.springdata.service.implementation;
 
 import edu.miu.springdata.DTO.ProductDto;
+import edu.miu.springdata.DTO.ReviewDto;
 import edu.miu.springdata.entity.bidirectional.Product;
+import edu.miu.springdata.entity.bidirectional.Review;
 import edu.miu.springdata.repository.ProductRepo;
 import edu.miu.springdata.service.ProductService;
-import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,6 +67,15 @@ public class ProductServiceImpl implements ProductService {
         productRepo.findByNameContaining(name).forEach(
                 p -> result.add(modelMapper.map(p, ProductDto.class))
         );
+        return result;
+    }
+    public List<ReviewDto> getReviewByProductId(int id) {
+        List<ReviewDto> result = new ArrayList<>();
+        productRepo
+                .findById(id)
+                .stream().forEach(
+                        p -> result.add(modelMapper.map(p.getReviews(), ReviewDto.class))
+                );
         return result;
     }
 
