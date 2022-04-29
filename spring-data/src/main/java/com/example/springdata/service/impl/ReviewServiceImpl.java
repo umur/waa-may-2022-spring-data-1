@@ -15,22 +15,18 @@ import java.util.stream.StreamSupport;
 public class ReviewServiceImpl implements ReviewService {
     private ReviewRepository reviewRepository;
 
-    @Override
-    public void save(Review review) {
-        reviewRepository.save(review);
+    public Review save(Review review) {
+        return reviewRepository.save(review);
     }
 
-    @Override
     public void delete(Integer id) {
         reviewRepository.deleteById(id);
     }
 
-    @Override
     public Review getById(Integer id) {
         return reviewRepository.findById(id).orElse(null);
     }
 
-    @Override
     public List<Review> getAll() {
         return StreamSupport
                 .stream(reviewRepository.findAll().spliterator(), false)

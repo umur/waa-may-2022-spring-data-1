@@ -1,11 +1,16 @@
 package com.example.springdata.service.impl;
 
+import com.example.springdata.dto.AddUserDto;
+import com.example.springdata.dto.UserDto;
 import com.example.springdata.entity.User;
 import com.example.springdata.repository.UserRepository;
 import com.example.springdata.service.UserService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -13,27 +18,39 @@ import java.util.stream.StreamSupport;
 @AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-    @Override
-    public void save(User user) {
-        userRepository.save(user);
+    public User save(AddUserDto userDto) throws ParseException {
+        User u = convertToEntity(userDto);
+//        u.setAddress(address);
+
+        User result = userRepository.save(u);
+        return result;
     }
 
-    @Override
     public void delete(Integer id) {
         userRepository.deleteById(id);
     }
 
-    @Override
     public User getById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    @Override
     public List<User> getAll() {
         return StreamSupport
                 .stream(userRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    }
+
+    private UserDto convertToDto(User user) {
+        UserDto userDto = modelMapper.map(user, UserDto.class);
+        return userDto;
+    }
+
+    private User convertToEntity(AddUserDto userDto) throws ParseException {
+        User user = modelMapper.map(userDto, User.class);
+        user.getAddress().setUser(user);
+        return user;
     }
 }

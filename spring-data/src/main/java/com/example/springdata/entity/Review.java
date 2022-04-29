@@ -1,5 +1,6 @@
 package com.example.springdata.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Review {
 
     private String comment;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private User user;
 }

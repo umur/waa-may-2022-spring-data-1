@@ -15,22 +15,18 @@ import java.util.stream.StreamSupport;
 public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
-    @Override
-    public void save(Category category) {
-        categoryRepository.save(category);
+    public Category save(Category category) {
+        return categoryRepository.save(category);
     }
 
-    @Override
     public void delete(Integer id) {
         categoryRepository.deleteById(id);
     }
 
-    @Override
     public Category getById(Integer id) {
         return categoryRepository.findById(id).orElse(null);
     }
 
-    @Override
     public List<Category> getAll() {
         return StreamSupport
                 .stream(categoryRepository.findAll().spliterator(), false)

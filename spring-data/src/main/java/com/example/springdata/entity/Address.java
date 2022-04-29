@@ -1,6 +1,9 @@
 package com.example.springdata.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -18,6 +21,11 @@ public class Address {
 
     private String zip;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private User user;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

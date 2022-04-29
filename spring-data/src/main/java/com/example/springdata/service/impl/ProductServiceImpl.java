@@ -15,22 +15,18 @@ import java.util.stream.StreamSupport;
 public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
-    @Override
-    public void save(Product product) {
-        productRepository.save(product);
+    public Product save(Product product) {
+        return productRepository.save(product);
     }
 
-    @Override
     public void delete(Integer id) {
         productRepository.deleteById(id);
     }
 
-    @Override
     public Product getById(Integer id) {
         return productRepository.findById(id).orElse(null);
     }
 
-    @Override
     public List<Product> getAll() {
         return StreamSupport
                 .stream(productRepository.findAll().spliterator(), false)
