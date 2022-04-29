@@ -16,7 +16,7 @@ public class Category {
     private String name;
 
     @Fetch(FetchMode.JOIN)
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private List<Product> products;
 
