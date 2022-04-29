@@ -43,13 +43,13 @@ VALUES (5, 'MI', 400, 1,1);
 
 -- REVIEWS
 
-INSERT INTO reviews (id,comment)
-VALUES (1,'awesome phone');
+INSERT INTO reviews (id,comment, product_id)
+VALUES (1,'awesome phone',1);
 
-INSERT INTO reviews (id,comment)
-VALUES (2,'amazing phone');
+INSERT INTO reviews (id,comment, product_id)
+VALUES (2,'amazing phone',1);
 
-INSERT INTO reviews (id,comment)
-VALUES (3,'awesome tablet');
+INSERT INTO reviews (id,comment, product_id)
+VALUES (3,'awesome tablet',2);
 
 

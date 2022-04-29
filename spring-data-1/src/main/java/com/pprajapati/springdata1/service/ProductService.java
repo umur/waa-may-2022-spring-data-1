@@ -15,4 +15,6 @@ public interface ProductService {
 
     List<Product> getWithMinPrice();
     List<Review> getReviewsFromProductId(int productId);
+
+    List<Product> getByName(String name);
 }

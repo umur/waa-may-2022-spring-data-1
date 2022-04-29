@@ -1,6 +1,7 @@
 package com.pprajapati.springdata1.controller;
 
 import com.pprajapati.springdata1.domain.Product;
+import com.pprajapati.springdata1.domain.Review;
 import com.pprajapati.springdata1.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,19 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         productService.delete(id);
+    }
+
+    @GetMapping("/getreviewsbyproduct/{id}")
+    public List<Review> getReviewsByProductId(@PathVariable int id) {
+        return productService.getReviewsFromProductId(id);
+
+    }
+
+    @GetMapping("/getByName/{name}")
+    public List<Product> getByName(@PathVariable String name) {
+        System.out.println(name);
+        return productService.getByName(name);
+
     }
 
 }

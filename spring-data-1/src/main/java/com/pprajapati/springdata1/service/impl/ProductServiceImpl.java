@@ -47,5 +47,12 @@ public class ProductServiceImpl implements ProductService {
         Product product = (Product) productRepo.findById(productId).get();
         return product.getReviews();
     }
+
+    @Override
+    public List<Product> getByName(String name) {
+        return productRepo.findByNameContaining(name);
+//        return StreamSupport.stream(productRepo.findByNameContaining(name).spliterator(), false)
+//                .collect(Collectors.toList());
+    }
 }
 
