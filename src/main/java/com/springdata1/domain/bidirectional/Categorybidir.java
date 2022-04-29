@@ -14,8 +14,8 @@ public class Categorybidir {
     private int id;
     private String name;
 
-    @OneToMany(mappedBy = "categorbidir")
-    //@JoinColumn(name="category_id")
+    @OneToMany//(mappedBy = "categorbidir")
+    @JoinColumn(name="category_id")
     private List<Productbidir> productbidirs;
 
 }

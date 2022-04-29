@@ -1,6 +1,8 @@
 package com.springdata1.domain.unidirectional;
 
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +14,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @OneToMany
+
+    @Fetch(FetchMode.JOIN)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     private List<Product> products;
 
