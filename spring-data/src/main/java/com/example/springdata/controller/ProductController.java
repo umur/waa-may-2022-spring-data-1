@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,9 +28,12 @@ public class ProductController {
             Double maxPrice = Double.valueOf(params.get("maxPrice"));
             String categoryName = params.get("categoryName");
             return ResponseEntity.ok(productService.getAllByCategoryNameAndMaxPrice(categoryName, maxPrice));
+        } else if (params.containsKey("name")) {
+            String name = params.get("name");
+            return ResponseEntity.ok(productService.getAllByName(name));
         }
 
-        return ResponseEntity.ok(productService.getAll());
+        return ResponseEntity.ok(new ArrayList<>());
     }
 
     @PostMapping

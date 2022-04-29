@@ -26,7 +26,6 @@ public class User {
     private String lastName;
 
     @OneToOne
-    @JoinColumn
     private Address address;
 
 //    @OneToMany(cascade = CascadeType.ALL)

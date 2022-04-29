@@ -22,7 +22,7 @@ public class Address {
 
     private String zip;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JsonIgnore
     private User user;
 

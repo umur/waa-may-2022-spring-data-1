@@ -58,11 +58,21 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ProductDto> getAllByCategoryNameAndMaxPrice(String categoryName, double price) {
         var products = productRepository.findAllByCategoryNameAndPriceLessThan(categoryName, price).stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
         return products;
+    }
+
+    @Override
+    public List<ProductDto> getAllByName(String n) {
+        var products = productRepository.findByNameContaining(n);
+
+        return products.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     private ProductDto convertToDto(Product product) {

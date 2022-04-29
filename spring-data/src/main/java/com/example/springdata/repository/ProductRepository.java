@@ -3,6 +3,7 @@ package com.example.springdata.repository;
 import com.example.springdata.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     List<Product> findAllByCategoryNameAndPriceLessThan(String c, double price);
 
+    List<Product> findByNameContaining(@Param("name") String n);
 }
