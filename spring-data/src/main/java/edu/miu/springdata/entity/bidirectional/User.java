@@ -17,8 +17,12 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Review> reviews;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="produc_id")
+    private List<Product> products;
 
     @OneToOne
     @JoinColumn(name = "address_id")

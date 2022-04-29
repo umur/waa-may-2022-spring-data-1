@@ -2,6 +2,7 @@ package edu.miu.springdata.controller;
 
 import edu.miu.springdata.DTO.ProductDto;
 import edu.miu.springdata.service.ProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,20 +23,20 @@ public class ProductController {
         productService.save(p);
     }
     @GetMapping
-    public List<ProductDto> getAll() {
-        return productService.getAll();
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
-//    @GetMapping("/{id}")
-//    public ResponseEntity<ProductDto> getById(@PathVariable int id) {
-//        return ResponseEntity.ok(productService.getById(id));
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDto> getById(@PathVariable int id) {
+        return ResponseEntity.ok(productService.getById(id));
+    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         productService.deleteById(id);
     }
 
-    @GetMapping("/{minPrice}")
+    @GetMapping("/price/{minPrice}")
     public List<ProductDto> findByPriceGreaterThan(@PathVariable float minPrice) {
         return productService.findByPriceGreaterThan(minPrice);
     }
@@ -45,10 +46,15 @@ public class ProductController {
 
         return productService.findByCategoryAndPriceLessThan(category, price);
     }
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public List<ProductDto> findByNameContaining(@PathVariable String name){
         return productService.findByNameContaining(name);
     }
+
+//    @GetMapping("/user/{id}")
+//    public ResponseEntity<?> getProductByUserId(@PathVariable long id) {
+//        return new ResponseEntity<>(productService.getProductsByUserId(id), HttpStatus.OK);
+//    }
 
 
 
