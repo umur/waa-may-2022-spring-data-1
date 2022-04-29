@@ -1,6 +1,6 @@
 package edu.miu.springdata.repository;
 
-import edu.miu.springdata.entity.unidirectional.Review;
+import edu.miu.springdata.entity.bidirectional.Review;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

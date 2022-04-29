@@ -1,11 +1,13 @@
 package edu.miu.springdata.service.implementation;
 
 import edu.miu.springdata.DTO.ProductDto;
-import edu.miu.springdata.entity.unidirectional.Product;
+import edu.miu.springdata.entity.bidirectional.Product;
 import edu.miu.springdata.repository.ProductRepo;
 import edu.miu.springdata.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,10 +16,11 @@ import java.util.List;
 
 @Service
 @Transactional
-@AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
-    private final ProductRepo productRepo;
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ProductRepo productRepo;
+
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public void save(ProductDto p) {
@@ -44,4 +47,27 @@ public class ProductServiceImpl implements ProductService {
         );
         return result;
     }
+
+    public List<ProductDto> findByPriceGreaterThan(float price){
+        List<ProductDto> result = new ArrayList<>();
+        productRepo.findByPriceGreaterThan(price).forEach(
+                p -> result.add(modelMapper.map(p, ProductDto.class))
+        );
+        return result;
+    }
+    public List<ProductDto> findByCategoryAndPriceLessThan(String Category, float price){
+        List<ProductDto> result = new ArrayList<>();
+        productRepo.findByCategoryAndPriceLessThan(Category, price).forEach(
+                p -> result.add(modelMapper.map(p, ProductDto.class))
+        );
+        return result;
+    }
+    public List<ProductDto> findByNameContaining(String name){
+        List<ProductDto> result = new ArrayList<>();
+        productRepo.findByNameContaining(name).forEach(
+                p -> result.add(modelMapper.map(p, ProductDto.class))
+        );
+        return result;
+    }
+
 }

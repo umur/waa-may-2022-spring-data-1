@@ -1,6 +1,6 @@
 package edu.miu.springdata.repository;
 
-import edu.miu.springdata.entity.unidirectional.Category;
+import edu.miu.springdata.entity.bidirectional.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

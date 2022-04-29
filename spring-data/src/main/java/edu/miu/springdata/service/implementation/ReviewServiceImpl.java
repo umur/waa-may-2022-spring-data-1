@@ -1,11 +1,13 @@
 package edu.miu.springdata.service.implementation;
 
 import edu.miu.springdata.DTO.ReviewDto;
-import edu.miu.springdata.entity.unidirectional.Review;
+import edu.miu.springdata.entity.bidirectional.Review;
+import edu.miu.springdata.entity.unidirectional.ReviewUni;
 import edu.miu.springdata.repository.ReviewRepo;
 import edu.miu.springdata.service.ReviewService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,10 +16,10 @@ import java.util.List;
 
 @Service
 @Transactional
-@AllArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
-    private final ReviewRepo reviewRepo;
-    private final ModelMapper modelMapper;
+    @Autowired
+    private  ReviewRepo reviewRepo;
+    private final ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public void save(ReviewDto p) {

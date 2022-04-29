@@ -1,4 +1,4 @@
-package edu.miu.springdata.entity.bidirectional;
+package edu.miu.springdata.entity.unidirectional;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class ProductBi {
+public class ProductUni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +15,5 @@ public class ProductBi {
     private String name;
     private float price;
     private int rating;
-    @ManyToOne
-    private CategoryBi category;
 
 }

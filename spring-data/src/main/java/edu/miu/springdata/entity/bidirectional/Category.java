@@ -1,22 +1,18 @@
 package edu.miu.springdata.entity.bidirectional;
-
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
 @Data
-public class AddressBi {
-
+@Entity
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String street;
-    private String zip;
-    private String city;
+    private String name;
 
-
-     @OneToOne(mappedBy="address")
-     private UserBi user;
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 
 }

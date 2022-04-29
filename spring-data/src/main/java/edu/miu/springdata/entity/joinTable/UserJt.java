@@ -1,6 +1,5 @@
 package edu.miu.springdata.entity.joinTable;
 
-import edu.miu.springdata.entity.unidirectional.Address;
 import lombok.Data;
 
 import javax.persistence.*;

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class User {
+public class UserUni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,9 +19,9 @@ public class User {
 //    Uncomment for one to many unidirectional mapping
     @OneToMany
     @JoinColumn(name = "review_id")
-    private List<Review> reviews;
+    private List<ReviewUni> reviewUnis;
 
     @OneToOne
     @JoinColumn(name = "address_id")
-    private Address address;
+    private AddressUni addressUni;
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class UserBi {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,10 +17,10 @@ public class UserBi {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
-    private List<ReviewBi> reviews;
+    @OneToMany
+    private List<Review> reviews;
 
     @OneToOne
     @JoinColumn(name = "address_id")
-    private AddressBi address;
+    private Address address;
 }

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Address {
+public class AddressUni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

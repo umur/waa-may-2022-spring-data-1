@@ -6,13 +6,13 @@ import java.util.List;
 
 @Data
 @Entity
-public class Category {
+public class CategoryUni {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
        @OneToMany
        @JoinColumn(name = "productId")
-    private List<Product> products;
+    private List<ProductUni> productUnis;
 
 }

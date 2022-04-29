@@ -1,6 +1,6 @@
 package edu.miu.springdata.DTO;
 
-import edu.miu.springdata.entity.unidirectional.Product;
+import edu.miu.springdata.entity.unidirectional.ProductUni;
 import lombok.Data;
 
 import java.util.List;
@@ -9,5 +9,5 @@ import java.util.List;
 public class CategoryDto {
     private int id;
     private String name;
-    private List<Product> products;
+    private List<ProductUni> productUnis;
 }

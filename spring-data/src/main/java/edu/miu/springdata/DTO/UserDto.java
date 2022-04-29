@@ -1,7 +1,7 @@
 package edu.miu.springdata.DTO;
 
-import edu.miu.springdata.entity.unidirectional.Address;
-import edu.miu.springdata.entity.unidirectional.Review;
+import edu.miu.springdata.entity.unidirectional.AddressUni;
+import edu.miu.springdata.entity.unidirectional.ReviewUni;
 import lombok.Data;
 import java.util.List;
 
@@ -12,6 +12,6 @@ public class UserDto {
     private String password;
     private String firstName;
     private String lastName;
-    private List<Review> reviews;
-    private Address address;
+    private List<ReviewUni> reviewUnis;
+    private AddressUni addressUni;
 }

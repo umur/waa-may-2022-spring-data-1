@@ -6,13 +6,17 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class ReviewBi {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String comment;
+    private String street;
+    private String zip;
+    private String city;
 
-    @ManyToOne
-    private UserBi user;
+
+     @OneToOne(mappedBy="address")
+     private User user;
+
 }

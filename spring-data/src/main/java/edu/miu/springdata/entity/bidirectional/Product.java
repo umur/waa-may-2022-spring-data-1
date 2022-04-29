@@ -1,18 +1,21 @@
 package edu.miu.springdata.entity.bidirectional;
+
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Data
 @Entity
-public class CategoryBi {
+@Data
+public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
 
-    @OneToMany(mappedBy = "category")
-    private List<ProductBi> products;
+    private String name;
+    private float price;
+    private int rating;
+    @ManyToOne
+    private Category category;
 
 }
