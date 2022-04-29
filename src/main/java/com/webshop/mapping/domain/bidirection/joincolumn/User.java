@@ -1,6 +1,7 @@
 package com.webshop.mapping.domain.bidirection.joincolumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,11 +27,9 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
     private List<Review> reviews;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Address address;
 
 }

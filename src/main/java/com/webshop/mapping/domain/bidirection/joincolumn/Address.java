@@ -1,5 +1,6 @@
 package com.webshop.mapping.domain.bidirection.joincolumn;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,6 @@ public class Address {
 
     private String city;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 }

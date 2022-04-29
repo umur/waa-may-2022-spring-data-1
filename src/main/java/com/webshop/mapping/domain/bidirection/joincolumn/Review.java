@@ -1,5 +1,6 @@
 package com.webshop.mapping.domain.bidirection.joincolumn;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.webshop.mapping.domain.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

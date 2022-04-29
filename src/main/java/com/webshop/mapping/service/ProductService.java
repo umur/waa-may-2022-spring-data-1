@@ -15,9 +15,9 @@ public interface ProductService {
 
     void remove(Long id);
 
-    List<ProductDto> findAllByPriceGreaterThan(int minPrice);
+    List<ProductDto> findAllByPriceGreaterThan(Double minPrice);
 
-    List<ProductDto> findByCategoryNameAndPriceLessThan(String categoryName, int maxPrice);
+    List<ProductDto> findByCategoryNameAndPriceLessThan(String categoryName, Double maxPrice);
 
     List<ProductDto> findAllByNameContains(String keyword);
 

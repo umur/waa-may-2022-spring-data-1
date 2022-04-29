@@ -51,14 +51,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDto> findAllByPriceGreaterThan(int minPrice) {
+    public List<ProductDto> findAllByPriceGreaterThan(Double minPrice) {
         var products = productRepository.findAllByPriceGreaterThan(minPrice);
         Type listType = new TypeToken<List<ProductDto>>(){}.getType();
         return modelMapper.map(products,listType);
     }
 
     @Override
-    public List<ProductDto> findByCategoryNameAndPriceLessThan(String categoryName, int maxPrice) {
+    public List<ProductDto> findByCategoryNameAndPriceLessThan(String categoryName, Double maxPrice) {
         var products = productRepository.findByCategoryNameAndPriceLessThan(categoryName,maxPrice);
         Type listType = new TypeToken<List<ProductDto>>(){}.getType();
         return modelMapper.map(products,listType);

@@ -1,6 +1,7 @@
 package com.webshop.mapping.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.webshop.mapping.domain.bidirection.joincolumn.Review;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,5 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product")
-    @JsonIgnore
     private List<Review> reviews;
 }

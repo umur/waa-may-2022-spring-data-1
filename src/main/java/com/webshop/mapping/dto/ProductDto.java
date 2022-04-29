@@ -20,4 +20,5 @@ public class ProductDto {
     private Double rating;
 
     private CategoryDto category;
+
 }

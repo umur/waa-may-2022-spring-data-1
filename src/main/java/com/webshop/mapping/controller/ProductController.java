@@ -62,19 +62,19 @@ public class ProductController {
     }
 
     @GetMapping("/filter-price-greater-than")
-    public ResponseEntity<List<ProductDto>> findAllByPriceGreaterThan(@RequestParam("min-price") int minPrice){
+    public ResponseEntity<List<ProductDto>> findAllByPriceGreaterThan(@RequestParam("min-price") Double minPrice){
         List<ProductDto> productDtos = productService.findAllByPriceGreaterThan(minPrice);
         return ResponseEntity.ok(productDtos);
     }
 
     @GetMapping("/filter-category-and-price-less-than")
-    public ResponseEntity<List<ProductDto>> findByCategoryNameAndPriceLessThan(@RequestParam("max-price") int maxPrice, @RequestParam("category") String category){
+    public ResponseEntity<List<ProductDto>> findByCategoryNameAndPriceLessThan(@RequestParam("max-price") Double maxPrice, @RequestParam("category") String category){
         List<ProductDto> productDtos = productService.findByCategoryNameAndPriceLessThan(category, maxPrice);
         return ResponseEntity.ok(productDtos);
     }
 
     @GetMapping("/filter-name")
-    public ResponseEntity<List<ProductDto>> findAllByNameContains(@RequestParam("name") String name){
+    public ResponseEntity<List<ProductDto>> findAllByNameContains(@RequestParam String name){
         List<ProductDto> productDtos = productService.findAllByNameContains(name);
         return ResponseEntity.ok(productDtos);
     }
