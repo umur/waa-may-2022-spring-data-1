@@ -1,5 +1,6 @@
 package com.shop.association.domain.bidirection.joincolumn;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.shop.association.domain.Product;
 import lombok.Data;
 
@@ -18,5 +19,6 @@ public class Review3 {
     private User3 user3;
     @ManyToOne
     @JoinColumn
+    @JsonBackReference
     private Product product;
 }
