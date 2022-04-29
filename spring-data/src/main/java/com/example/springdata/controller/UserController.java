@@ -1,6 +1,7 @@
 package com.example.springdata.controller;
 
 import com.example.springdata.dto.AddUserDto;
+import com.example.springdata.dto.UserDto;
 import com.example.springdata.entity.User;
 import com.example.springdata.service.UserService;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,9 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody AddUserDto userDto) throws ParseException {
-        User user = userService.save(userDto);
+    public ResponseEntity<UserDto> save(@RequestBody AddUserDto userDto) throws ParseException {
+        UserDto user = userService.save(userDto);
         return ResponseEntity.ok(user);
     }
+
 }

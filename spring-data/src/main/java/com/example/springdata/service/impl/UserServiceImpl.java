@@ -21,12 +21,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
-    public User save(AddUserDto userDto) throws ParseException {
+    public UserDto save(AddUserDto userDto) throws ParseException {
         User u = convertToEntity(userDto);
-//        u.setAddress(address);
 
         User result = userRepository.save(u);
-        return result;
+        return convertToDto(result);
     }
 
     public void delete(Integer id) {
