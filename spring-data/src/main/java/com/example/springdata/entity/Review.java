@@ -15,9 +15,9 @@ public class Review {
 
     private String comment;
 
-//    @ManyToOne(cascade = CascadeType.PERSIST)
-//    @JsonIgnore
-//    private User user;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    private User user;
 
     @JsonIgnore
     @ManyToOne()

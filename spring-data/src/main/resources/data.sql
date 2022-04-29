@@ -42,11 +42,11 @@ VALUES (3, 'iPhone 13', 2000, 5, 1, 7);
 
 -- REVIEWS
 
-INSERT INTO REVIEW (id,comment,product_id)
-VALUES (1,'awesome phone',1);
+INSERT INTO REVIEW (id,comment,product_id, user_id)
+VALUES (1,'awesome phone 1',1, 7);
 
-INSERT INTO REVIEW (id,comment,product_id)
-VALUES (2,'amazing phone',1);
+INSERT INTO REVIEW (id,comment,product_id, user_id)
+VALUES (2,'amazing phone 2',1, 7);
 
-INSERT INTO REVIEW (id,comment,product_id)
-VALUES (3,'awesome tablet',2);
+INSERT INTO REVIEW (id,comment,product_id, user_id)
+VALUES (3,'awesome tablet',2, 7);
