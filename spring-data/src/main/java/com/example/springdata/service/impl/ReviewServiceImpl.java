@@ -48,6 +48,13 @@ public class ReviewServiceImpl implements ReviewService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<ReviewDto> getAllJPQLByProductIdAndUserId(int productId, int userId) {
+        return reviewRepository.findJPQLByProductIdAndUserId(productId, userId).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     private ReviewDto convertToDto(Review review) {
         ReviewDto reviewDto = modelMapper.map(review, ReviewDto.class);
         return reviewDto;

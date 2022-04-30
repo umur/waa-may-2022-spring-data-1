@@ -14,18 +14,28 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/v1/reviews")
 @AllArgsConstructor
 public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @GetMapping
+    @GetMapping("api/v1/reviews")
     public ResponseEntity<List<ReviewDto>> getAllByProductIdAndUserId(@RequestParam Map<String, String> params) {
         if (params.containsKey("productId") && params.containsKey("userId")) {
             int productId = Integer.parseInt(params.get("productId"));
             int userId = Integer.parseInt(params.get("userId"));
             return ResponseEntity.ok(reviewService.getAllByProductIdAndUserId(productId, userId));
+        }
+
+        return ResponseEntity.badRequest().body(new ArrayList<>());
+    }
+
+    @GetMapping("api/v2/reviews")
+    public ResponseEntity<List<ReviewDto>> getAllJPQLByProductIdAndUserId(@RequestParam Map<String, String> params) {
+        if (params.containsKey("productId") && params.containsKey("userId")) {
+            int productId = Integer.parseInt(params.get("productId"));
+            int userId = Integer.parseInt(params.get("userId"));
+            return ResponseEntity.ok(reviewService.getAllJPQLByProductIdAndUserId(productId, userId));
         }
 
         return ResponseEntity.badRequest().body(new ArrayList<>());

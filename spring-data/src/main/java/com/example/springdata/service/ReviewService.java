@@ -15,4 +15,6 @@ public interface ReviewService {
     public List<Review> getAll();
 
     List<ReviewDto> getAllByProductIdAndUserId(int productId, int userId);
+
+    List<ReviewDto> getAllJPQLByProductIdAndUserId(int productId, int userId);
 }
