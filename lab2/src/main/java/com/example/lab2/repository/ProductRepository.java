@@ -16,8 +16,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     List<Product> findAllByPriceGreaterThan(double minPrice);
 
     //    Find all products in cat category and cost less than maxPrice.
-    List<Product> findAllByCategoryAndPriceIsLessThan(String category, double price);
-
+    List<Product> findAllByCategory_NameAndPriceIsLessThan(String category, double price);
 
     //    Find all products created by the user with id =id.
 

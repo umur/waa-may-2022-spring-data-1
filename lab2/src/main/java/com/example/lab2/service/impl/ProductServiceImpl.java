@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findAllByCategoryAndPriceIsLessThan(String category, double price){
 //        Category category2 = categoryRepository.findFirstBy(category);
-        return  StreamSupport.stream(productRepository.findAllByCategoryAndPriceIsLessThan(category, price).spliterator(), false)
+        return  StreamSupport.stream(productRepository.findAllByCategory_NameAndPriceIsLessThan(category, price).spliterator(), false)
                 .map(c -> modelMapper.map(c, ProductDTO.class))
                 .toList();
     }
