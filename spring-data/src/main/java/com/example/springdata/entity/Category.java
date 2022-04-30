@@ -10,7 +10,8 @@ import java.util.List;
 @Data
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "samples_id_seq", sequenceName = "samples_id_seq", initialValue = 8, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "samples_id_seq")
     private int id;
 
     private String name;

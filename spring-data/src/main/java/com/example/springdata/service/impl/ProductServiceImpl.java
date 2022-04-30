@@ -4,8 +4,10 @@ import com.example.springdata.dto.AddProductDto;
 import com.example.springdata.dto.ProductDto;
 import com.example.springdata.entity.Category;
 import com.example.springdata.entity.Product;
+import com.example.springdata.entity.User;
 import com.example.springdata.repository.CategoryRepository;
 import com.example.springdata.repository.ProductRepository;
+import com.example.springdata.repository.UserRepository;
 import com.example.springdata.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,15 +24,18 @@ import java.util.stream.StreamSupport;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
     public ProductDto save(AddProductDto productDto) throws ParseException {
         Product product = convertToEntity(productDto);
         Optional<Category> category = categoryRepository.findById(productDto.getCategoryId());
-//        Optional<Category> category = categoryRepository.findById(1);
         if (category.isPresent()) {
             product.setCategory(category.get());
-//            category.get().getProducts().add(product);
+        }
+        Optional<User> user = userRepository.findById(productDto.getCreatedBy());
+        if (user.isPresent()) {
+            product.setCreatedBy(user.get());
         }
         productRepository.save(product);
         return convertToDto(product);
@@ -88,8 +93,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private Product convertToEntity(AddProductDto productDto) throws ParseException {
-        ModelMapper mapper = new ModelMapper();
-        Product product = mapper.map(productDto, Product.class);
+        Product product = new Product();
+        product.setName(productDto.getName());
+        product.setPrice(productDto.getPrice());
+        product.setRating(productDto.getRating());
         return product;
     }
 }

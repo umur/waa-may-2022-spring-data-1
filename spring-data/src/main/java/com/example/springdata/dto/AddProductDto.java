@@ -14,4 +14,6 @@ public class AddProductDto {
     private Double rating;
 
     private int categoryId;
+
+    private int createdBy;
 }

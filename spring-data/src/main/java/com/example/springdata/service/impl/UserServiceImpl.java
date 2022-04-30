@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
     private User convertToEntity(AddUserDto userDto) throws ParseException {
         User user = modelMapper.map(userDto, User.class);
         user.getAddress().setUser(user);
+
 //        List<Review> reviews = user.getReviews();
 //        for (Review review:
 //             reviews) {
