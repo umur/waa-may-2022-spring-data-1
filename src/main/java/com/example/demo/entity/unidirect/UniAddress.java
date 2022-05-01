@@ -1,4 +1,4 @@
-package com.example.demo.mappingwith;
+package com.example.demo.entity.unidirect;
 
 import lombok.Data;
 
@@ -8,12 +8,11 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Data
-public class WithAddress {
+public class UniAddress {
     @Id
     private int id;
     private  String street;
     private String zip;
     private String city;
-    @OneToOne(mappedBy = "address")
-    private WithCustomer customer;
+
 }

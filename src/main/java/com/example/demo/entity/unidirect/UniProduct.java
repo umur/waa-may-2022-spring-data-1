@@ -1,4 +1,4 @@
-package com.example.demo.unidirect;
+package com.example.demo.entity.unidirect;
 
 import lombok.Data;
 

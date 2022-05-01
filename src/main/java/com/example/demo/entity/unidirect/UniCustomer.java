@@ -1,4 +1,4 @@
-package com.example.demo.mappingwith2;
+package com.example.demo.entity.unidirect;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class With2Customer {
+public class UniCustomer {
     @Id
     private int id;
     private  String email;
@@ -15,9 +15,9 @@ public class With2Customer {
     private String firstName;
     private String lastname;
     @OneToMany
-   @JoinColumn(name = "customer_id")
-    private List<With2Review> reviews;
+    @JoinColumn(name = "customer_id")
+    private List<UniReview> reviews;
     @OneToOne
     @JoinColumn(name = "address_id")
-    private With2Address address;
+    private UniAddress address;
 }

@@ -1,4 +1,4 @@
-package com.example.demo.mappingwith;
+package com.example.demo.entity.mappingwith2;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class WithCustomer {
+public class With2Customer {
     @Id
     private int id;
     private  String email;
@@ -15,9 +15,9 @@ public class WithCustomer {
     private String firstName;
     private String lastname;
     @OneToMany
-   @JoinTable(name = "with_customer_review")
-    private List<WithReview> reviews;
+   @JoinColumn(name = "customer_id")
+    private List<With2Review> reviews;
     @OneToOne
-    @JoinTable(name = "with_customer_address")
-    private WithAddress address;
+    @JoinColumn(name = "address_id")
+    private With2Address address;
 }

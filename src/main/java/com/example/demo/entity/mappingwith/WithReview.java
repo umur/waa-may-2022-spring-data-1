@@ -1,4 +1,4 @@
-package com.example.demo.mappingwith2;
+package com.example.demo.entity.mappingwith;
 
 import lombok.Data;
 
@@ -8,10 +8,10 @@ import javax.persistence.ManyToOne;
 
 @Data
 @Entity
-public class With2Review {
+public class WithReview {
     @Id
     private  int id;
     private String comment;
     @ManyToOne
-    private With2Customer customer;
+    private WithCustomer customer;
 }

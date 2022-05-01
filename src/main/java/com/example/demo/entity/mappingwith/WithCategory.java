@@ -1,4 +1,4 @@
-package com.example.demo.mappingwith;
+package com.example.demo.entity.mappingwith;
 
 import lombok.Data;
 
