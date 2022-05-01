@@ -15,7 +15,7 @@ public class Customer {
     private int id;
     private  String email;
     private String  password;
-    private String firstName;
+    private String firstname;
     private String lastname;
     @OneToMany(mappedBy = "customer")
     private List<Review> reviews;

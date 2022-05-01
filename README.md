@@ -39,7 +39,7 @@ In this lab you will develop a Product Review Application.
 * Use n-tier software architecture model.
 * Use DTOs.
 * PostgreSQL is recommended as a Relational Database system.
-* Populate your database with dummy data using `data.sql`.
+* Populate your database with dummy data using `data.sqlwww`.
 
 
 ## Submission

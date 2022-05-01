@@ -7,7 +7,7 @@ public abstract class CustomerRepo1 implements CustomerRepo {
     @Override
     public Customer geoorgfdgfhgh(String firstName1) {
         Customer c= new Customer();
-        c.setFirstName(firstName1);
+        c.setFirstname(firstName1);
         return c;
     }
 }

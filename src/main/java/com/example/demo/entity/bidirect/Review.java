@@ -2,9 +2,8 @@ package com.example.demo.entity.bidirect;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,4 +13,7 @@ public class Review {
     private String comment;
     @ManyToOne
     private Customer customer;
+
+    @ManyToOne
+    private Product product;
 }
