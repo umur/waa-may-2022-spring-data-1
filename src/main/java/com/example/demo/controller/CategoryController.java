@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoryController {
     private ProductService productService;
 
-    @GetMapping("/{id}/products/")
+    @GetMapping("/{id}/products")
     public List<Product> findProductswithPrice(@PathVariable int id, @RequestParam(defaultValue = "0",name = "maxprice") double maxprice){
       return   productService.findAllByCategoryIdAndPriceLessThan(id,maxprice);
     }

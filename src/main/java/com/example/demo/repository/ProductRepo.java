@@ -15,4 +15,6 @@ public interface ProductRepo extends CrudRepository<Product,Integer> {
     public List<Product> findAllByPriceLessThan(double price);
     public List<Product> findAllByCategoryIdAndPriceLessThan(int categoryId,double price);
     public List<Product> findAllByNameContaining(String name);
+
+    public List<Product>  getByReviewsCustomerId(int customerId);
 }

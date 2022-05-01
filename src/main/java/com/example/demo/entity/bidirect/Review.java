@@ -1,5 +1,6 @@
 package com.example.demo.entity.bidirect;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,8 +13,10 @@ public class Review {
     private  int id;
     private String comment;
     @ManyToOne
+    @JsonBackReference
     private Customer customer;
 
     @ManyToOne
+    @JsonBackReference
     private Product product;
 }

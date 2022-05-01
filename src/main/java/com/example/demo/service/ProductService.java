@@ -32,4 +32,7 @@ public class ProductService {
     public List<Product> findAllByNameContaining(String name){
         return productRepo.findAllByNameContaining(name);
     }
+    public List<Product> getProductsByCustomerId(int customerId){
+        return productRepo.getByReviewsCustomerId(customerId);
+    }
 }

@@ -17,12 +17,13 @@ public class ProductController {
     public List<Product> findAll() {
         return productService.findAll();
     }
-    @GetMapping("/")
-    public List<Product> findAllProductsPrice(@RequestParam(defaultValue = "0",name="minprice") double minprice,@RequestParam(defaultValue = "0",name="maxprice") double maxprice,@RequestParam(defaultValue = "",name="name") String name) {
+
+    @GetMapping
+    public List<Product> findAllProductsPrice(@RequestParam(defaultValue = "0", name = "minprice") double minprice, @RequestParam(defaultValue = "0", name = "maxprice") double maxprice, @RequestParam(defaultValue = "", name = "name") String name) {
         if (minprice > 0) {
             System.out.println("in");
             return productService.findAllByPriceGreaterThan(minprice);
-        }  else if (maxprice > 0) {
+        } else if (maxprice > 0) {
             return productService.findAllByPriceLessThan(maxprice);
         } else if (!name.equals("")) {
             return productService.findAllByNameContaining(name);
@@ -30,4 +31,9 @@ public class ProductController {
             return null;
     }
 
+    @GetMapping("/users/{id}")
+    public List<Product> getProductsByCustomerId(@PathVariable int id) {
+        return productService.getProductsByCustomerId(id);
+    }
 }
+
