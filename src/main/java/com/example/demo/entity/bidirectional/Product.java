@@ -3,6 +3,7 @@ package com.example.demo.entity.bidirectional;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,4 +18,8 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
+
 }
