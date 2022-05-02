@@ -27,8 +27,8 @@ public class ReviewService {
         return reviews;
     }
 
-    public void delete(Review review){
-        reviewRepo.delete(review);
+    public void delete(int id){
+        reviewRepo.deleteById(id);
     }
 
     public void update(int id, Review review){

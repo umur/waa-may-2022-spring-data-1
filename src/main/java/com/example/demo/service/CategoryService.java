@@ -28,8 +28,8 @@ public class CategoryService {
         return categories;
     }
 
-    public void delete(Category category){
-        categoryRepo.delete(category);
+    public void delete(int id){
+        categoryRepo.deleteById(id);
     }
 
     public void update(int id, Category category){

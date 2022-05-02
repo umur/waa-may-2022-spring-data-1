@@ -26,8 +26,8 @@ public class UserService {
         return users;
     }
 
-    public void delete(User user){
-        userRepo.delete(user);
+    public void delete(int id){
+        userRepo.deleteById(id);
     }
 
     public void update(int id, User user){

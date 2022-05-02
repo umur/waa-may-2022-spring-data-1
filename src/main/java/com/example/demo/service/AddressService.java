@@ -27,8 +27,8 @@ public class AddressService {
         return addresses;
     }
 
-    public void delete(Address address){
-        addressRepo.delete(address);
+    public void delete(int id){
+        addressRepo.deleteById(id);
     }
 
     public void update(int id, Address address){
