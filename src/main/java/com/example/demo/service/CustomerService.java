@@ -21,6 +21,7 @@ public class CustomerService {
       return  customerRepo.geoorgfdgfhgh("geo");
     }
     public List<Product> findByIdProductsByReviewsProduct(int customerId){
-        return customerRepo.getProductsByReviewsProductByCustomerId(customerId);
+     //   return customerRepo.getProductsByReviewsProductByCustomerId(customerId);
+    return null;
     }
 }

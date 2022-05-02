@@ -21,5 +21,5 @@ public interface CustomerRepo extends  CrudRepository<Customer,Integer> {
     public List<Customer> getCustomerByEmailAndAddressContaining(String email,String address);
     public List<Product> getProductsById(int customerId);
 
-    public List<Product> getProductsByReviewsProductByCustomerId( int customerId);
+ //   public List<Product> getProductsByReviewsProductByCustomerId( int customerId);
 }

@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 
 import com.example.demo.entity.bidirect.Product;
+import com.example.demo.entity.bidirect.Review;
 import com.example.demo.repository.ProductRepo;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,5 +36,8 @@ public class ProductService {
     }
     public List<Product> getProductsByCustomerId(int customerId){
         return productRepo.getByReviewsCustomerId(customerId);
+    }
+    public List<Review> getAllReviewsById(int customerId){
+        return productRepo.getById(customerId).getReviews();
     }
 }

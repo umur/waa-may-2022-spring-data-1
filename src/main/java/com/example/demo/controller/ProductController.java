@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.bidirect.Product;
+import com.example.demo.entity.bidirect.Review;
 import com.example.demo.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,10 @@ public class ProductController {
     @GetMapping("/users/{id}")
     public List<Product> getProductsByCustomerId(@PathVariable int id) {
         return productService.getProductsByCustomerId(id);
+    }
+    @GetMapping("/{id}/reviews")
+    public List<Review> getReviewsById(@PathVariable int id) {
+        return productService.getAllReviewsById(id);
     }
 }
 
