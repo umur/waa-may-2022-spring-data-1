@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class ProductB {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +17,6 @@ public class ProductB {
 
     @ManyToOne
     @JoinColumn
-    private CategoryB categoryB;
+    private Category categoryName;
 
 }

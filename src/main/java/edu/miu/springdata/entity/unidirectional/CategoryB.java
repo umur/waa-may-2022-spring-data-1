@@ -1,4 +1,4 @@
-package edu.miu.springdata.entity.bidirectional;
+package edu.miu.springdata.entity.unidirectional;
 
 import lombok.Data;
 
@@ -14,8 +14,9 @@ public class CategoryB {
 
     private String name;
 
-    @OneToMany(mappedBy = "categoryB")
-    private List<ProductB> productBS;
+    @OneToMany
+//    @JoinColumn(name = "id_category")
+    private List<ProductB> products;
 
 
 
