@@ -1,8 +1,11 @@
 package com.example.datademo.service.impl;
 
-import com.example.datademo.dto.ProductDto;
+import com.example.datademo.entity.Category;
 import com.example.datademo.entity.Product;
+import com.example.datademo.entity.User;
+import com.example.datademo.repository.CategoryRepository;
 import com.example.datademo.repository.ProductRepository;
+import com.example.datademo.repository.UserRepository;
 import com.example.datademo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +17,14 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository){
+    private final UserRepository userRepository;
+
+    public ProductServiceImpl(ProductRepository productRepository,CategoryRepository categoryRepository,UserRepository userRepository){
+        this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
+        this.userRepository = userRepository;
     }
     @Override
     public Iterable<Product> getAll() {
@@ -52,15 +60,52 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product p) {
+        Optional<Category> c= categoryRepository.findById(p.getCategory().getId());
+        if(c.isPresent()) {
+           p.setCategory(c.get());
+        }else{
+            categoryRepository.save(p.getCategory());
+        }
         productRepository.save(p);
     }
 
     @Override
     public List<Product> findProduct(Double price){
-        return productRepository.findProductByPriceGreaterThan(price);
+        return productRepository.findProductByPriceGreaterThan(price==0?price:price-1);
     }
     @Override
     public List<Product> findProduct2(Double price){
-        return productRepository.findProduct(price);
+        return productRepository.findProduct(price==0?price:price-1);
+    }
+
+    @Override
+    public List<Product> findProductByCat(String c,Double price){
+        return productRepository.findAllByCategoryNameAndPriceLessThan(c,price+1);
+    }
+
+    @Override
+    public List<Product> findProductByCat2(String c,Double price){
+        return productRepository.findProductByCat(c,price+1);
+    }
+
+    @Override
+    public List<Product> findByName(String name) {
+        return productRepository.findAllByNameContainingIgnoreCase(name);
+    }
+
+    @Override
+    public List<Product> findByName2(String name) {
+        return productRepository.findProductByPName("%"+name+"%");
+    }
+
+    @Override
+    public List<Product> findByUser(int id) {
+        User user = userRepository.findById(id).get();
+        return productRepository.findAllByUser(user);
+    }
+
+    @Override
+    public List<Product> findByUser2(int id) {
+        return productRepository.findByUserID(id);
     }
 }

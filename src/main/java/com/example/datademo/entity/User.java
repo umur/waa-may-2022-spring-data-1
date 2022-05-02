@@ -22,10 +22,16 @@ public class User {
 
     private String password;
 
-    @JsonIgnoreProperties("user")
+
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private List<Review> reviews;
 
     @OneToOne(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private Address address;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    private List<Product> products;
 }

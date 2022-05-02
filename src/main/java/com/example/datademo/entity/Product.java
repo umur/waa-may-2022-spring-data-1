@@ -2,9 +2,11 @@ package com.example.datademo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,6 +22,11 @@ public class Product {
     private Double rating;
 
     @JsonIgnoreProperties("products")
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne( fetch = FetchType.EAGER)
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnoreProperties("products")
+    private User user;
 }

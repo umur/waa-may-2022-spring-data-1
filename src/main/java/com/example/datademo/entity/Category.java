@@ -18,6 +18,6 @@ public class Category {
 
     // @JoinColumn(name="category_id")
     @JsonIgnoreProperties("category")
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",cascade = CascadeType.PERSIST)
     private List<Product> products;
 }

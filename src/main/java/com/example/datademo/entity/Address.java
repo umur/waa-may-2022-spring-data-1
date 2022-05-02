@@ -1,5 +1,6 @@
 package com.example.datademo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,5 +19,6 @@ public class Address {
     private String zip;
 
     @OneToOne
+    @JsonIgnoreProperties("address")
     private User user;
 }

@@ -18,4 +18,16 @@ public interface ProductService {
 
     public List<Product> findProduct(Double price);
     public List<Product> findProduct2(Double price);
+
+    public List<Product> findProductByCat(String c, Double price);
+
+    public List<Product> findProductByCat2(String c, Double price);
+
+    public List<Product> findByName(String name);
+
+    public List<Product> findByName2(String name);
+
+    public List<Product> findByUser(int id);
+
+    public List<Product> findByUser2(int id);
 }

@@ -15,7 +15,7 @@ public class UniCategory {
 
     private String name;
 
-    // @JoinColumn(name="category_id")
+
     @OneToMany
     private List<UniProduct> products;
 }

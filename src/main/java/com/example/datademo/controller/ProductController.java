@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("api/v1/products")
 @CrossOrigin("*")
 public class ProductController {
@@ -24,12 +25,22 @@ public class ProductController {
         return ResponseEntity.ok("Success");
     }
     @GetMapping
-    public ResponseEntity<Iterable<Product>> getAll(@RequestParam Optional<Double> minPrice){
+    public ResponseEntity<Iterable<Product>> getAll(@RequestParam Optional<Double> minPrice,@RequestParam Optional<String> category, @RequestParam Optional<Double> maxPrice,@RequestParam Optional<String> keyword,@RequestParam Optional<Integer> user_id){
         if (minPrice.isPresent()) {
             Iterable<Product> list = productService.findProduct(minPrice.get());
             return ResponseEntity.ok(list);
 
-        }else{
+        }else if(category.isPresent() && maxPrice.isPresent()){
+            List<Product> result = productService.findProductByCat2(category.get(),maxPrice.get());
+            return ResponseEntity.ok(result);
+        }else if(keyword.isPresent()){
+            List<Product>result = productService.findByName2(keyword.get());
+            return ResponseEntity.ok(result);
+        }else if(user_id.isPresent()){
+            List<Product>result = productService.findByUser2(user_id.get());
+            return ResponseEntity.ok(result);
+        }
+        else{
             Iterable<Product> list = productService.getAll();
             return ResponseEntity.ok(list);
         }
@@ -50,5 +61,4 @@ public class ProductController {
         productService.delete(id);
         return ResponseEntity.ok("Success");
     }
-
 }

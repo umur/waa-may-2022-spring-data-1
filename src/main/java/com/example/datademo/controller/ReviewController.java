@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("api/v1/reviews")
 @CrossOrigin("*")
@@ -24,6 +26,12 @@ public class ReviewController {
     @GetMapping
     public ResponseEntity<Iterable<Review>> getAll(){
         Iterable<Review> list = reviewService.getAll();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity<List<Review>> getAllByProduct(@PathVariable int id){
+        List<Review> list = reviewService.getAllByProduct(id);
         return ResponseEntity.ok(list);
     }
     @GetMapping("/{id}")

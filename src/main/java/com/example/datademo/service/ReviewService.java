@@ -3,6 +3,8 @@ package com.example.datademo.service;
 import com.example.datademo.entity.Review;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ReviewService {
     public Iterable<Review> getAll();
@@ -14,4 +16,8 @@ public interface ReviewService {
     public void delete(int id);
 
     public void save(Review r);
+
+    public List<Review> getAllByProduct(int id);
+
+    public List<Review> getAllByProduct2(int id);
 }

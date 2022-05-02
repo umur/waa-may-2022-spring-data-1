@@ -7,6 +7,7 @@ import com.example.datademo.repository.ReviewRepository;
 import com.example.datademo.service.ReviewService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,8 +15,11 @@ public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
 
-    public ReviewServiceImpl(ReviewRepository reviewRepository){
+    private final ProductRepository productRepository;
+
+    public ReviewServiceImpl(ReviewRepository reviewRepository,ProductRepository productRepository){
         this.reviewRepository = reviewRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -51,5 +55,16 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void save(Review r) {
         reviewRepository.save(r);
+    }
+
+    @Override
+    public List<Review> getAllByProduct(int id) {
+        Product p = productRepository.findById(id).get();
+        return reviewRepository.findAllByProduct(p);
+    }
+
+    @Override
+    public List<Review> getAllByProduct2(int id) {
+        return reviewRepository.findAllByProductID(id);
     }
 }
