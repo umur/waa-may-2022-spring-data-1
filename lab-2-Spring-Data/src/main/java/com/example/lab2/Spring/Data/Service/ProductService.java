@@ -7,15 +7,15 @@ import java.util.Optional;
 
 public interface ProductService {
 
-    public List<Product> getAll();
+    List<Product> getAll();
 
-    public  List<Product> filterByPrice(float minPrice, float maxPrice, String name);
+    List<Product> filterByPrice(float minPrice, float maxPrice, String name);
 
-    public Optional<Product> getProductById(int id);
+    Optional<Product> getProductById(int id);
 
-    public void create(Product product);
+    void create(Product product);
 
-    public void update(Product product, int id);
+    void update(Product product, int id);
 
-    public void delete(int id);
+    void delete(int id);
 }
