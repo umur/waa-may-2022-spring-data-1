@@ -15,10 +15,6 @@ public class Product {
     private float price;
     private int rating;
 
-//    @JoinColumn
-//    @ManyToOne
-//    private Category category;
-
     @ManyToOne
     private Category category;
 }

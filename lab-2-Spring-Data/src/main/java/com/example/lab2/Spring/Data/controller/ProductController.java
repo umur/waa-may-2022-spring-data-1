@@ -5,6 +5,7 @@ import com.example.lab2.Spring.Data.entity.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -29,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/v1/products/{id}")
-    public List<Product> getProductsById(@PathVariable("id") int id) {
+    public Optional<Product> getProductsById(@PathVariable("id") int id) {
         return productService.getProductById(id);
     }
 

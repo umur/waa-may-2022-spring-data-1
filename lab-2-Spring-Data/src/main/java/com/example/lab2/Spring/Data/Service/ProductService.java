@@ -3,6 +3,7 @@ package com.example.lab2.Spring.Data.Service;
 import com.example.lab2.Spring.Data.entity.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -10,7 +11,7 @@ public interface ProductService {
 
     public  List<Product> filterByPrice(float minPrice, float maxPrice, String name);
 
-    public List<Product> getProductById(int id);
+    public Optional<Product> getProductById(int id);
 
     public void create(Product product);
 
