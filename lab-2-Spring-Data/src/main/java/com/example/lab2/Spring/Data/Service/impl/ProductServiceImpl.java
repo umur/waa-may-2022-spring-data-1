@@ -35,6 +35,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getProductById(int id) {
+        return productRepo.findById(id);
+    }
+
+    @Override
     public void create(Product product) {
         productRepo.save(product);
     }

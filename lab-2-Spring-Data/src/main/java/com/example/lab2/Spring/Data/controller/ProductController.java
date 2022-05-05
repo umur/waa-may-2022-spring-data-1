@@ -28,10 +28,10 @@ public class ProductController {
         return productService.filterByPrice(minPrice, maxPrice, name);
     }
 
-//    @GetMapping(value = "/v1/products/name/{price}")
-//    public List<Product> findAllByNameContaining(@PathVariable("price") float price) {
-//        return productService.filterByPrice(price);
-//    }
+    @GetMapping(value = "/v1/products/{id}")
+    public List<Product> getProductsById(@PathVariable("id") int id) {
+        return productService.getProductById(id);
+    }
 
     @PostMapping(value="/v1/products")
     public void create(@RequestBody Product product) {
