@@ -1,4 +1,4 @@
-package com.example.lab2.Spring.Data.controller;
+package com.example.aop.controller;
 
 import com.example.lab2.Spring.Data.Service.UserService;
 import com.example.lab2.Spring.Data.entity.User;
