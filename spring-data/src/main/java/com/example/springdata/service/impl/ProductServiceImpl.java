@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,8 @@ public class ProductServiceImpl implements ProductService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
+//    private final EntityManager entityManager;
+
     public ProductDto save(AddProductDto productDto) throws ParseException {
         Product product = convertToEntity(productDto);
         Optional<Category> category = categoryRepository.findById(productDto.getCategoryId());
@@ -38,6 +41,11 @@ public class ProductServiceImpl implements ProductService {
             product.setCreatedBy(user.get());
         }
         productRepository.save(product);
+
+//        entityManager.persist(product);
+//        entityManager.flush();
+//        entityManager.clear();
+
         return convertToDto(product);
     }
 

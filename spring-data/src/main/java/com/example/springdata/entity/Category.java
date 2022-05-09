@@ -2,6 +2,7 @@ package com.example.springdata.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.List;
